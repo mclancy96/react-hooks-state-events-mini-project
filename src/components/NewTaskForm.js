@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories, addTask }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [newTaskDetails, setNewTaskDetails] = useState('')
   const [newTaskCategory, setNewTaskCategory] = useState(categories[1])
 
@@ -15,7 +15,7 @@ function NewTaskForm({ categories, addTask }) {
 
   const handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
-    addTask({ category: newTaskCategory, text: newTaskDetails })
+    onTaskFormSubmit({ category: newTaskCategory, text: newTaskDetails })
     setNewTaskDetails('')
   }
 

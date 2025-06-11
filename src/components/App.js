@@ -18,7 +18,7 @@ function App() {
     setDisplayedTaskList(displayedTaskList.filter(task => task.text !== taskText))
   }
 
-  const addTask = (task) => {
+  const onTaskFormSubmit = (task) => {
     const selectedCategory = document.querySelector('.categories').querySelector('.selected').id
     setTaskList([...taskList, task])
     if (selectedCategory === 'All' || (task.category && task.category === selectedCategory)) {
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterTasks={filterTasks} />
-      <NewTaskForm categories={CATEGORIES} addTask={addTask} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
       <TaskList tasks={displayedTaskList} removeTask={removeTask} />
     </div>
   );
