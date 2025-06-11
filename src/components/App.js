@@ -8,8 +8,6 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
-  //don't like this implementation, but it preserves the removed/added tasks like a db
-  //alternatively, the filtered out tasks could just be hidden
   const [taskList, setTaskList] = useState(TASKS)
   const [displayedTaskList, setDisplayedTaskList] = useState(TASKS)
 
