@@ -12,6 +12,7 @@ function CategoryFilter({ categories, filterTasks }) {
   const handleClick = (clickEvent) => {
     clearAllClasses();
     clickEvent.target.className = 'selected'
+    filterTasks(clickEvent.target.id)
   }
   return (
     <div className="categories">

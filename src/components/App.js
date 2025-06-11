@@ -8,14 +8,18 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+  //don't like this implementation, but it preserves the removed/added tasks like a db
+  //alternatively, the filtered out tasks could just be hidden
   const [taskList, setTaskList] = useState(TASKS)
+  const [displayedTaskList, setDisplayedTaskList] = useState(TASKS)
 
   const removeTask = (taskText) => {
     setTaskList(taskList.filter(task => task.text !== taskText))
+    setDisplayedTaskList(displayedTaskList.filter(task => task.text !== taskText))
   }
 
   const filterTasks = (category) => {
-    setTaskList(taskList.map(task => {
+    setDisplayedTaskList(taskList.filter(task => {
       if (category === 'All') return true;
       return task.category === category
     }))
@@ -26,7 +30,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterTasks={filterTasks} />
       <NewTaskForm />
-      <TaskList tasks={taskList} removeTask={removeTask} />
+      <TaskList tasks={displayedTaskList} removeTask={removeTask}/>
     </div>
   );
 }
