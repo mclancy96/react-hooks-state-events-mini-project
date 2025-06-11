@@ -14,10 +14,17 @@ function App() {
     setTaskList(taskList.filter(task => task.text !== taskText))
   }
 
+  const filterTasks = (category) => {
+    setTaskList(taskList.map(task => {
+      if (category === 'All') return true;
+      return task.category === category
+    }))
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter categories={CATEGORIES} filterTasks={filterTasks} />
       <NewTaskForm />
       <TaskList tasks={taskList} removeTask={removeTask} />
     </div>
