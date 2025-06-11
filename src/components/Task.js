@@ -1,10 +1,10 @@
 import React from "react";
 
-function Task({ task, removeTask, syncDisplay }) {
+function Task({ task, removeTask, category, text }) {
   return (
     <div className="task">
-      <div className="label">{task.category}</div>
-      <div className="text">{task.text}</div>
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
       <button className="delete" onClick={() => { removeTask(task.text) }}>X</button>
     </div>
   );
